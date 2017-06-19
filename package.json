@@ -19,12 +19,17 @@
   "author": "Thomas Peklak",
   "license": "MIT",
   "dependencies": {
-    "gm": ">1.8.0 <2.0.0",
-    "mkdirp": "0.3.x",
-    "express": ">3.1.0 <3.4.0",
     "async": "0.2.x",
+    "events": "^1.1.1",
+    "express": ">3.1.0 <3.4.0",
+    "gm": ">1.8.0 <2.0.0",
+    "graceful-fs": "^4.1.11",
     "mime": "1.2.x",
-    "q": "~0.9.6"
+    "minimatch": "^3.0.4",
+    "mkdirp": "0.3.x",
+    "pug": "^2.0.0-rc.2",
+    "q": "~0.9.6",
+    "util": "^0.10.3"
   },
   "devDependencies": {
     "mocha": "1.10.x",

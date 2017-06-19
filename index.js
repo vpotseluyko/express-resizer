@@ -1,17 +1,17 @@
 "use strict";
 
-var util = require("util");
-var EventEmitter = require("events").EventEmitter;
-var functionize = require("./lib/functionize");
-var planTasks = require("./lib/plan-tasks");
-var Preset = require("./lib/preset");
-var clear = require("./lib/clear");
+const util = require("util");
+const EventEmitter = require("events").EventEmitter;
+const functionize = require("./lib/functionize");
+const planTasks = require("./lib/plan-tasks");
+const Preset = require("./lib/preset");
+const clear = require("./lib/clear");
 
-var express = require("express");
+const express = require("express");
 
-var Resizer = function (publicDir) {
+const Resizer = function (publicDir) {
     if (!this instanceof Resizer) throw "Resizer must be invoked with new";
-    var self = this;
+    const self = this;
     this.app = express();
     this.presets = [];
     this.publicDir = publicDir;
@@ -24,8 +24,8 @@ var Resizer = function (publicDir) {
 util.inherits(Resizer, EventEmitter);
 
 Resizer.prototype.attach = function (name) {
-    var self = this;
-    var preset = new Preset(name);
+    const self = this;
+    const preset = new Preset(name);
     preset.publicDir(this.publicDir);
 
     preset.once("done", function (preset) {
@@ -43,7 +43,7 @@ Resizer.prototype.generateRoute = function (preset) {
 };
 
 Resizer.prototype.addHelpers = function () {
-    var self = this;
+    const self = this;
     this.presets.forEach(function (preset) {
         self.app.parent.locals[functionize(preset.name) + "Path"] = function (src) {
             return src.replace(preset.from, preset.target, src);
@@ -55,7 +55,7 @@ Resizer.prototype.addHelpers = function () {
 };
 
 Resizer.prototype.addUpdateHelpers = function () {
-    var self = this;
+    const self = this;
     if (self.app.parent.resizer) {
         throw "Resizre can not add deletion und update helpers because resizer is already defined in app.";
     }
